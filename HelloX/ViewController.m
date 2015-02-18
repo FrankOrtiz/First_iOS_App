@@ -76,28 +76,23 @@
     }
 }  //  Dice roll end
 - (IBAction)die1Press:(id)sender {
-    if (self.die1.tag == 1){
-        self.die1.tag = 2;
-    }
+    [self disableRoll:self.die1];
 }
 - (IBAction)die2Press:(id)sender {
-    if (self.die2.tag == 1){
-        self.die2.tag = 2;
-    }
+    [self disableRoll:self.die2];
 }
 - (IBAction)die3Press:(id)sender {
-    if (self.die3.tag == 1){
-        self.die3.tag = 2;
-    }
+    [self disableRoll:self.die3];
 }
 - (IBAction)die4Press:(id)sender {
-    if (self.die4.tag == 1){
-        self.die4.tag = 2;
-    }
+    [self disableRoll:self.die4];
 }
 - (IBAction)die5Press:(id)sender {
-    if (self.die5.tag == 1){
-        self.die5.tag = 2;
+    [self disableRoll:self.die5];
+}
+-(void)disableRoll:(UIButton *)die{
+    if(die.tag == 1){
+        die.tag = 2;
     }
 }
 - (IBAction)startGame:(id)sender {
