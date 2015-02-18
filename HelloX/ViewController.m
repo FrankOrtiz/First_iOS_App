@@ -44,40 +44,26 @@
 }
 - (IBAction)diceRoll:(id)sender {
     //  Dice roll start
-    int lowerBound = 1;
-    int upperBound = 7;
-    
-    int rndValue1 = lowerBound + arc4random() % (upperBound - lowerBound);
-    int rndValue2 = lowerBound + arc4random() % (upperBound - lowerBound);
-    int rndValue3 = lowerBound + arc4random() % (upperBound - lowerBound);
-    int rndValue4 = lowerBound + arc4random() % (upperBound - lowerBound);
-    int rndValue5 = lowerBound + arc4random() % (upperBound - lowerBound);
-    
     if (self.rollCount > 0){
         if (self.die1.tag == 1){
-            self.die1Value = rndValue1;
-            NSString* rndString1 = [@(rndValue1) stringValue];
-            [self.die1 setTitle:rndString1 forState:UIControlStateNormal];
+            self.die1Value = self.rndValue;
+            [self setTheDieToRandomValue:self.die1 :self.die1Value];
         }
         if(self.die2.tag == 1){
-            self.die2Value = rndValue2;
-            NSString* rndString2 = [@(rndValue2) stringValue];
-            [self.die2 setTitle:rndString2 forState:UIControlStateNormal];
+            self.die2Value = self.rndValue;
+            [self setTheDieToRandomValue:self.die2 :self.die2Value];
         }
         if(self.die3.tag == 1){
-            self.die3Value = rndValue3;
-            NSString* rndString3 = [@(rndValue3) stringValue];
-            [self.die3 setTitle:rndString3 forState:UIControlStateNormal];
+            self.die3Value = self.rndValue;
+            [self setTheDieToRandomValue:self.die3 :self.die3Value];
         }
         if(self.die4.tag == 1){
-            self.die4Value = rndValue4;
-            NSString* rndString4 = [@(rndValue4) stringValue];
-            [self.die4 setTitle:rndString4 forState:UIControlStateNormal];
+            self.die4Value = self.rndValue;
+            [self setTheDieToRandomValue:self.die4 :self.die4Value];
         }
         if(self.die5.tag == 1){
-            self.die5Value = rndValue5;
-            NSString* rndString5 = [@(rndValue5) stringValue];
-            [self.die5 setTitle:rndString5 forState:UIControlStateNormal];
+            self.die5Value = self.rndValue;
+            [self setTheDieToRandomValue:self.die5 :self.die5Value];
         }
         NSString* diceValues = [@(self.die1Value + self.die2Value + self.die3Value + self.die4Value + self.die5Value) stringValue];
         self.totalScore.text = diceValues;
@@ -125,5 +111,11 @@
     NSString *rollTitle = [rollsLeft stringByAppendingString:@" )"];
     [self.rollDie setTitle:rollTitle forState:UIControlStateNormal];
 }
-
+-(void)setTheDieToRandomValue:(UIButton *)die :(int)rnd{
+    NSString *title = [NSString stringWithFormat:@"%li",(long)rnd];
+    [die setTitle:title forState:UIControlStateNormal];
+}
+-(int)rndValue{
+    return (rand() % 6) + 1;
+}
 @end
